@@ -27,7 +27,7 @@
             <li><%= link_to "Books", "/books",class:"fas fa-book-open nav-link text-light" %></li>
             <li><%= link_to "logout", destroy_user_session_path,class:"fas fa-sign-out-alt nav-link text-light" ,method: :delete %></li>
             <% else %>
-            <li><%= link_to"Home",root_path,  class:"fas fa-link nav-link text-light" %></li>
+            <li><%= link_to"Home",root_path,  class:"fas fa-home nav-link text-light" %></li>
             <li><%= link_to"About",about_path,class:"fas fa-link nav-link text-light" %></li>
             <li><%= link_to"Sign up", "/users/sign_up",class:"fas fa-user-plus nav-link text-light" %></li>
             <li><%= link_to"login", "/users/sign_in",  class:"fas fa-sign-in-alt nav-link text-light" %></li>
