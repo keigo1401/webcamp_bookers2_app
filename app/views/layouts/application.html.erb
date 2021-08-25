@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
-            <li><%= link_to "Home", users_path(current_user.id),class:"fas fa-home nav-link text-light" %></li>
+            <li><%= link_to "Home", user_path(current_user.id),class:"fas fa-home nav-link text-light" %></li>
             <li><%= link_to "Users", "/users",class:"fas fa-users nav-link text-light" %></li>
             <li><%= link_to "Books", "/books",class:"fas fa-book-open nav-link text-light" %></li>
             <li><%= link_to "logout", destroy_user_session_path,class:"fas fa-sign-out-alt nav-link text-light" ,method: :delete %></li>
@@ -38,15 +38,6 @@
     </nav>
   </header>
 
-
-  <div class= "body">
-
-    <% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-  </div>
 
  <%= yield %>
 
