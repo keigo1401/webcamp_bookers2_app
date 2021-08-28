@@ -7,19 +7,19 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :post_images, dependent: :destroy
 
-  validates :name, length: {in: 2..20}
+  validates :name, length: {in: 2..20}, uniqueness: true
   validates :introduction, length: { maximum: 50}
 
-  validates_uniqueness_of :email, :allow_blank => true
+  # validates_uniqueness_of :email, :allow_blank => true
 
   attachment :profile_image
 
-  def email_required?
-    false
-  end
+  # def email_required?
+  #   false
+  # end
 
-  def email_changed?
-    false
-  end
+  # def email_changed?
+  #   false
+  # end
 
 end

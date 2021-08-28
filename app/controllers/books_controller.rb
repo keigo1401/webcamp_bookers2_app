@@ -3,6 +3,11 @@ class BooksController < ApplicationController
      before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
      #(ログインユーザー以外の人が情報を遷移しようとした時に制限をかける)
 
+
+  def new
+    @book = Book.new
+  end
+
   def create
     @user = current_user
     @book = Book.new(book_params)
@@ -18,16 +23,16 @@ class BooksController < ApplicationController
   end
 
   def index
+    @user = current_user
     @books = Book.all
     @book = Book.new
     @book.user_id = current_user.id
   end
 
   def show
-    @books = Book.all
-    @user = current_user
-    @book = Book.find(params[:id])
-    @book_new = Book.new
+    @books = Book.find(params[:id])
+    @user = @books.user
+    @book = Book.new
   end
 
   def edit
@@ -36,7 +41,7 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
-    if @book.update(book_params)
+    if @book.update_attributes(book_params)
       flash[:notice] = "You have updated book successfully."
       redirect_to book_path(@book.id)
     else
